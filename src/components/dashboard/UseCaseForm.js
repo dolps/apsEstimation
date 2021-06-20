@@ -3,7 +3,7 @@ import React from "react";
 import {GridItem, Heading, FormControl, FormLabel, Input, Button, Alert, AlertIcon} from "@chakra-ui/react"
 import {useForm} from "react-hook-form";
 
-const LoginForm = () => {
+const UseCaseForm = () => {
     const {handleSubmit, register, setError, formState: {errors, isSubmitting, isSubmitSuccessful}} = useForm();
 
     const {sendSigninLink} = useAuth();
@@ -25,8 +25,8 @@ const LoginForm = () => {
             colStart={[1, null, null, 2, null, null]}
             colSpan={[3, null, null, 1, null, null]}
             p={6}
+            pt={12}
         >
-            <Heading as="h1" mb={6}>Login</Heading>
             {errors?.email && (<Alert status="error" variant="subtle" mt={6} mb={6}>
                 <AlertIcon/>
                 {errors.email.message}
@@ -37,14 +37,15 @@ const LoginForm = () => {
             </Alert>)}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl>
-                    <FormLabel htmlFor="email">Email</FormLabel>
-                    <Input id="email" name="email" placeholder="Email"  {...register("email", {})} type="text"/>
+                    <Input id="email" name="email"
+                           placeholder="As a user I want to create a new userStory"  {...register("email", {})}
+                           type="text"/>
                 </FormControl>
-                <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">Submit</Button>
+                <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">Create userStory</Button>
             </form>
         </GridItem>
     )
 
 };
 
-export default LoginForm
+export default UseCaseForm
