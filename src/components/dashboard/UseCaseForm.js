@@ -22,8 +22,8 @@ const UseCaseForm = () => {
 
     return (
         <GridItem
-            colStart={[1, null, null, 2, null, null]}
-            colSpan={[3, null, null, 1, null, null]}
+            colStart={[1, null, null, null, null, null]}
+            colSpan={[3, null, null, null, null, null]}
             p={6}
             pt={12}
         >

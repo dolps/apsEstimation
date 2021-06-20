@@ -19,6 +19,7 @@ import ConfirmForm from "./components/auth/confirmForm";
 import PrivateRoute from "./Route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import NotFound from "./components/NotFound";
+import Projects from "./components/projects/Projects";
 
 function App() {
     return (
@@ -29,8 +30,11 @@ function App() {
                         <Router>
                             <Layout>
                                 <Switch>
-                                    <PrivateRoute exact path="/">
+                                    <PrivateRoute exact path="/projects/:id">
                                         <Dashboard/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path="/projects">
+                                        <Projects/>
                                     </PrivateRoute>
                                     <Route exact path="/login">
                                         <LoginForm></LoginForm>

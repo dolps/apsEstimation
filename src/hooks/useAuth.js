@@ -12,6 +12,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+export const fireStore = firebase.firestore(); // TODO cleanup
+
 const AuthContext = createContext(null);
 
 export const useAuth = () => {

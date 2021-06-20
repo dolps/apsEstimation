@@ -11,6 +11,9 @@ const Nav = () => {
             <Flex>
                 {user && (
                     <>
+                        <Link to='/projects'>
+                            <Text fontSize="md" mr={8}>Projects</Text>
+                        </Link>
                         <Link to='/'>
                             <Text fontSize="md" mr={8}>Dashboard</Text>
                         </Link>
