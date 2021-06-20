@@ -1,3 +1,9 @@
+# used resources
+https://www.youtube.com/watch?v=K_wZCW6wXIo&ab_channel=codedamn login logout..
+https://www.youtube.com/watch?v=8Xnpipa2k2M&ab_channel=DailyWebCodingDailyWebCoding auth state
+
+useHooks.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
