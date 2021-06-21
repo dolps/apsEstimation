@@ -20,7 +20,8 @@ const UseCaseForm = ({projectId}) => {
                 title: data.input,
                 projectId: projectId,
                 createdBy: user.email,
-                developmentTime: 5
+                developmentTime: 0,
+                insecurityGrade: 1
             });
         } catch (error) {
             setError('input', {
@@ -35,7 +36,6 @@ const UseCaseForm = ({projectId}) => {
             colStart={[1, null, null, null, null, null]}
             colSpan={[3, null, null, null, null, null]}
             p={6}
-            pt={12}
         >
             {errors?.input && (<Alert status="error" variant="subtle" mt={6} mb={6}>
                 <AlertIcon/>

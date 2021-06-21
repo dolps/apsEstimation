@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import UseCaseForm from "./UseCaseForm";
 import UseCaseList from "./UseCaseList";
 import Projects from "../projects/Projects";
+import EstimationAddon from "./EstimationAddonCard";
 
 const Dashboard = () => {
     const {user} = useAuth();
@@ -15,6 +16,7 @@ const Dashboard = () => {
 
     return (
         <>
+            <EstimationAddon/>
             <UseCaseForm projectId={id}/>
             <UseCaseList projectId={id}/>
         </>
