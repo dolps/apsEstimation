@@ -12,11 +12,6 @@ const Projects = () => {
     const projectsRef = fireStore.collection(`users/${user.uid}/projects`);
     const [projects] = useCollectionData(projectsRef, {idField: "id"});
 
-    useEffect(() => {
-        console.log('hello', JSON.stringify(user.email))
-        console.log(JSON.stringify(projects))
-    }, []);
-
     const remove = (event, id) => {
         console.log('removing item ' + id);
         projectsRef.doc(id).delete();

@@ -15,8 +15,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <UseCaseForm/>
-            <UseCaseList/>
+            <UseCaseForm projectId={id}/>
+            <UseCaseList projectId={id}/>
         </>
     )
 };

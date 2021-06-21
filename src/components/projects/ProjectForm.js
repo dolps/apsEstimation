@@ -4,7 +4,6 @@ import {GridItem, FormControl, Input, Button, Alert, AlertIcon} from "@chakra-ui
 import {useForm} from "react-hook-form";
 
 const ProjectForm = () => {
-    const [project, setProject] = useState("");
     const {user} = useAuth();
     const projectsRef = fireStore.collection(`users/${user.uid}/projects`);
     const {handleSubmit, register, setError, formState: {errors, isSubmitting, isSubmitSuccessful}} = useForm();
