@@ -11,13 +11,11 @@ const ProjectForm = () => {
     const onSubmit = async (data) => {
         try {
             console.log("submitting: " + JSON.stringify(data));
-            projectsRef.add({
+            await projectsRef.add({
                 title: data.input,
                 numberOfUseCases: 0,
                 hoursOfWork: 0
-            }).then((res) => {
-                console.log('res:', JSON.stringify(res));
-            })
+            });
         } catch (error) {
             setError('input', {
                 type: 'manual',

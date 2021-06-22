@@ -2,6 +2,7 @@
 https://www.youtube.com/watch?v=K_wZCW6wXIo&ab_channel=codedamn login logout..
 https://www.youtube.com/watch?v=8Xnpipa2k2M&ab_channel=DailyWebCodingDailyWebCoding auth state
 https://www.youtube.com/watch?v=cuvP4h6O2x8 firestore
+https://medium.com/firebase-tips-tricks/how-to-secure-many-to-many-relationships-in-firestore-d19f972fd4d3
 useHooks.com
 maybe do npm i -D firebase-tools
 

@@ -1,20 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {fireStore, useAuth} from "../../hooks/useAuth";
 import {useCollectionData} from "react-firebase-hooks/firestore";
-import {GridItem, Grid, Box, Stack, Text, Link} from "@chakra-ui/react"
 import Card from "../dashboard/Card";
 import ProjectForm from "./ProjectForm";
 
 
 const Projects = () => {
     const {user} = useAuth();
-    const [project, setProject] = useState("");
     const projectsRef = fireStore.collection(`users/${user.uid}/projects`);
     const [projects] = useCollectionData(projectsRef, {idField: "id"});
 
-    const remove = (event, id) => {
+    const remove = async (event, id) => {
         console.log('removing item ' + id);
-        projectsRef.doc(id).delete();
+        await projectsRef.doc(id).delete();
     };
 
     return (
