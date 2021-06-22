@@ -19,7 +19,6 @@ import {fireStore} from "../../hooks/useAuth";
 import {EstimationContext} from "../../context/EstimationContext";
 import {calculateBest,calculateWorst,calculateMostLikely,calculateExpected} from "../service/UseCaseService"
 
-// TODO https://codesandbox.io/s/affectionate-swartz-9yk2u?file=/src/App.js:168-222 debounce
 function UseCaseCard(props) {
     const estimationContext = useContext(EstimationContext);
     const {usecase, id, title, onRemove} = props;
