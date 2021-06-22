@@ -1,13 +1,12 @@
 import {fireStore, useAuth} from "../../hooks/useAuth";
 import React, {useState} from "react";
-import {GridItem, FormControl, Input, Button, Alert, AlertIcon} from "@chakra-ui/react"
-import {useForm} from "react-hook-form";
+import {GridItem} from "@chakra-ui/react"
+
+import CreationForm from "../shared/CreationForm";
 
 const ProjectForm = () => {
     const {user} = useAuth();
     const newProjectsRef = fireStore.collection(`/projects`);
-    const {handleSubmit, register, setError, formState: {errors, isSubmitting}} = useForm();
-
 
     const joinProject = async (projectId) => {
         console.log('joining');
@@ -21,45 +20,28 @@ const ProjectForm = () => {
     };
 
     const onSubmit = async (data) => {
-        try {
-            console.log("submitting: " + JSON.stringify(data));
-            await newProjectsRef.add({
-                title: data.input,
-                numberOfUseCases: 0,
-                hoursOfWork: 0
-            }).then((result) => {
-                joinProject(result.id).then(() => {
-                    console.log('joined project');
-                })
+        await newProjectsRef.add({
+            title: data.input,
+            numberOfUseCases: 0,
+            hoursOfWork: 0
+        }).then((result) => {
+            joinProject(result.id).then(() => {
+                console.log('joined project');
             })
-        } catch (error) {
-            setError('input', {
-                type: 'manual',
-                message: error.message
-            })
-        }
+        })
+
     };
 
     return (
         <GridItem
-            colStart={[1, null, null, 1, null, null]}
-            colSpan={[3, null, null, 3, null, null]}
+            colStart={[1, null, null, null, null, null]}
+            colSpan={[3, null, null, null, null, null]}
             p={6}
-            pt={12}
         >
-            {errors?.input && (<Alert status="error" variant="subtle" mt={6} mb={6}>
-                <AlertIcon/>
-                {errors.input.message}
-            </Alert>)}
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <FormControl>
-                    <Input name="input"
-                           fontSize="sm"
-                           placeholder="APS Estimation App Project"  {...register("input", {})}
-                           type="text"/>
-                </FormControl>
-                <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">Create project</Button>
-            </form>
+            <CreationForm submission={onSubmit}
+                          placeholder="APS Estimation App Project"
+                          submitBtnTxt="Create project"
+            />
         </GridItem>
     )
 
