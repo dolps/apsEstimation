@@ -3,11 +3,14 @@ import {useForm} from "react-hook-form";
 import {FormControl, Input, Button, Alert, AlertIcon} from "@chakra-ui/react"
 
 const CreationForm = ({submission,placeholder,submitBtnTxt}) => {
-    const {handleSubmit, register, setError, formState: {errors, isSubmitting}} = useForm();
+    const {handleSubmit, register, setError, formState: {errors, isSubmitting},reset} = useForm();
 
     const onSubmit = async (data) => {
         try {
-            submission(data);
+            submission(data).then(()=>{
+                reset();
+            });
+
         } catch (error) {
             setError('input', {
                 type: 'manual',
