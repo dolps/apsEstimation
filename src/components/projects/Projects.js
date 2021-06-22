@@ -46,6 +46,7 @@ const Projects = () => {
             <ProjectForm/>
             {
                 newProjects && newProjects.map(function (data) {
+                    console.log('jaja' + JSON.stringify(data));
                     const {id, title, numberOfUseCases, hoursOfWork} = data;
                     const summary = numberOfUseCases.toString().concat(" useCases");
                     const longLine = hoursOfWork.toString().concat(" hours of work");

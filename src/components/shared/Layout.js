@@ -9,7 +9,7 @@ const Layout = ({children}) => {
             templateColumns="repeat(3, 1fr)"
             templateRows="max-content"
             gap={6}
-            p={3}
+            p={1}
         >
             <Nav/>
             {children}

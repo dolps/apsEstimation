@@ -5,14 +5,14 @@ import {
     Grid,
     theme,
 } from '@chakra-ui/react';
-import Layout from "./components/Layout";
+import Layout from "./components/shared/Layout";
 import {AuthProvider} from "./hooks/useAuth";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import LoginForm from "./components/auth/loginForm";
 import ConfirmForm from "./components/auth/confirmForm";
 import PrivateRoute from "./Route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/shared/NotFound";
 import Projects from "./components/projects/Projects";
 
 function App() {
@@ -24,15 +24,11 @@ function App() {
                         <Router>
                             <Layout>
                                 <Switch>
-                                    <Route
-                                        exact
-                                        path="/"
-                                        render={() => {
-                                            return (<Redirect to="/projects"/>)
-                                        }}
-                                    />
+                                    <Route exact path="/" render={() => {
+                                        return (<Redirect to="/projects"/>)
+                                    }}/>
                                     <Route exact path="/login">
-                                        <LoginForm></LoginForm>
+                                        <LoginForm/>
                                     </Route>
                                     <PrivateRoute exact path="/projects/:id">
                                         <Dashboard/>
@@ -41,10 +37,10 @@ function App() {
                                         <Projects/>
                                     </PrivateRoute>
                                     <Route exact path="/confirm">
-                                        <ConfirmForm></ConfirmForm>
+                                        <ConfirmForm/>
                                     </Route>
                                     <Route>
-                                        <NotFound></NotFound>
+                                        <NotFound/>
                                     </Route>
                                 </Switch>
                             </Layout>

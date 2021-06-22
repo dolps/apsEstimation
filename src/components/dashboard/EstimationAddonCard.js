@@ -10,8 +10,8 @@ const EstimationAddon = () => {
     return (
         <>
             <GridItem
-                colStart={[1, null, null, null, null, null]}
-                colSpan={[1, null, null, null, null, null]}
+                colStart={[1, null, null, 1, null, null]}
+                colSpan={[3, null, null, 1, null, null]}
                 p={6}
             >
                 <EstimationSlider title="design" value={context.designAddon} setValue={context.setDesignAddon}/>

@@ -3,8 +3,6 @@ import {
     Box,
     Text,
     Stack,
-    HStack,
-    VStack,
     IconButton,
     NumberInput,
     NumberInputField,
@@ -23,7 +21,7 @@ import {EstimationContext} from "../../context/EstimationContext";
 // TODO https://codesandbox.io/s/affectionate-swartz-9yk2u?file=/src/App.js:168-222 debounce
 function UseCaseCard(props) {
     const estimationContext = useContext(EstimationContext);
-    const {usecase, id, title, summary, longLine, onRemove} = props;
+    const {usecase, id, title, onRemove} = props;
     const collection = fireStore.collection(`projects/${usecase.projectId}/usecases`);
     const format = (val) => val + `h`
     const parse = (val) => val.replace(/^\h/, "")
@@ -97,6 +95,7 @@ function UseCaseCard(props) {
             mb={2}
         >
             <IconButton
+                position="relative" top={-3} left={-3}
                 onClick={(e) => onRemove(e, id)}
                 variant="ghost"
                 colorScheme="teal"
@@ -178,7 +177,6 @@ function UseCaseCard(props) {
                     worst: {calculateWorst()}h
                 </Text>
             </Stack>
-
         </Box>
     );
 }

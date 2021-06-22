@@ -1,8 +1,8 @@
-import {useAuth} from "../hooks/useAuth";
+import {useAuth} from "../../hooks/useAuth";
 import React from "react";
 import {GridItem, Flex, Text, Box} from "@chakra-ui/react"
 import {Link} from "react-router-dom";
-import {ColorModeSwitcher} from "../ColorModeSwitcher";
+import {ColorModeSwitcher} from "./ColorModeSwitcher";
 
 const Nav = () => {
     const {user, signOut} = useAuth();

@@ -54,7 +54,8 @@ const ProjectForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl>
                     <Input name="input"
-                           placeholder="Aps Estimation App Project"  {...register("input", {})}
+                           fontSize="sm"
+                           placeholder="APS Estimation App Project"  {...register("input", {})}
                            type="text"/>
                 </FormControl>
                 <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">Create project</Button>

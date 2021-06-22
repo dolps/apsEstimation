@@ -31,7 +31,6 @@ const UseCaseForm = ({projectId}) => {
         <GridItem
             colStart={[1, null, null, null, null, null]}
             colSpan={[3, null, null, null, null, null]}
-            p={6}
         >
             {errors?.input && (<Alert status="error" variant="subtle" mt={6} mb={6}>
                 <AlertIcon/>
@@ -44,6 +43,7 @@ const UseCaseForm = ({projectId}) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl>
                     <Input name="input"
+                           fontSize="sm"
                            placeholder="As a user I want to create a new userStory"  {...register("input", {required: true})}
                            type="text"/>
                 </FormControl>
