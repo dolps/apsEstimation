@@ -17,6 +17,7 @@ import {
 import {MdDelete} from "react-icons/md";
 import {fireStore} from "../../hooks/useAuth";
 import {EstimationContext} from "../../context/EstimationContext";
+import {calculateBest,calculateWorst,calculateMostLikely,calculateExpected} from "../service/UseCaseService"
 
 // TODO https://codesandbox.io/s/affectionate-swartz-9yk2u?file=/src/App.js:168-222 debounce
 function UseCaseCard(props) {
@@ -39,52 +40,6 @@ function UseCaseCard(props) {
         console.log('updating insecuritygrade: ' + event.target.value);
         setInsecurityGrade(event.target.value);
         await collection.doc(id).update('insecurityGrade', event.target.value);
-    };
-
-    const getInsecurityFactor = () => {
-        switch (Number(usecase.insecurityGrade)) {
-            case 1:
-                return {mostLikely: 1.3, worst: 1.8};
-            case 2:
-                return {mostLikely: 1.4, worst: 2.9};
-            case 3:
-                return {mostLikely: 2, worst: 6};
-            default:
-                throw new Error('Not a valid case: ');
-
-        }
-    };
-
-    const calculateMostLikely = () => {
-        const res = calculateBest() * getInsecurityFactor().mostLikely; // 2 == Høy usikkerhet for mostlikely
-        return parseFloat(res.toFixed(1))
-    };
-
-    const calculateBest = () => {
-        getInsecurityFactor();
-        let use = parseInt(developmentTime);
-        const designTime = (use * estimationContext.designAddon) / 100;
-        const testTime = (use * estimationContext.testAddon) / 100;
-        const totalDevelopmentTime = use + designTime + testTime;
-        const mgmtTime = (totalDevelopmentTime * estimationContext.MGMTAddon) / 100;
-
-        const result = use + designTime + testTime + mgmtTime;
-
-        return parseFloat(result.toFixed(1));
-    };
-
-    const calculateWorst = () => {
-        const res = calculateBest() * getInsecurityFactor().worst; // 6 == Høy usikkerhet for worst
-        return parseFloat(res.toFixed(1))
-    };
-
-    const calculateExpected = () => {
-        const best = calculateBest();
-        const mostLikely = calculateMostLikely() * 4;
-        const worst = calculateWorst();
-
-        const res = ((best + mostLikely + worst) / 6).toFixed(1);
-        return parseFloat(res);
     };
 
     return (
@@ -165,16 +120,16 @@ function UseCaseCard(props) {
                     calculated completion times:
                 </Text>
                 <Text my={2} color="gray.500">
-                    best:{calculateBest()}h
+                    best:{calculateBest(developmentTime,estimationContext)}h
                 </Text>
                 <Text my={2} color="gray.500">
-                    most likely:{calculateMostLikely()}h
+                    most likely:{calculateMostLikely(developmentTime,estimationContext,usecase.insecurityGrade)}h
                 </Text>
                 <Text my={2} color="gray.500">
-                    expected: {calculateExpected()}h
+                    expected: {calculateExpected(developmentTime,estimationContext,usecase.insecurityGrade)}h
                 </Text>
                 <Text my={2} color="gray.500">
-                    worst: {calculateWorst()}h
+                    worst: {calculateWorst(developmentTime,estimationContext,usecase.insecurityGrade)}h
                 </Text>
             </Stack>
         </Box>

@@ -1,6 +1,6 @@
 import React, {createContext, useState} from 'react'
 
-export const EstimationContext = createContext({});
+export const EstimationContext = createContext(null);
 
 export const EstimationContextProvider = props => {
     const [designAddon, setDesignAddon] = useState(0);
