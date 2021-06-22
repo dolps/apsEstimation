@@ -1,4 +1,4 @@
-export const getInsecurityFactor = (insecurityGrade) => {
+const getInsecurityFactor = (insecurityGrade) => {
     switch (Number(insecurityGrade)) {
         case 1:
             return {mostLikely: 1.3, worst: 1.8};
@@ -12,12 +12,7 @@ export const getInsecurityFactor = (insecurityGrade) => {
     }
 };
 
-export const calculateMostLikely = (developmentTime,estimationContext,insecurityGrade) => {
-    const res = calculateBest(developmentTime,estimationContext) * getInsecurityFactor(insecurityGrade).mostLikely; // 2 == Høy usikkerhet for mostlikely
-    return parseFloat(res.toFixed(1))
-};
-
-export  const calculateBest = (developmentTime,estimationContext) => {
+export const calculateBest = (developmentTime, estimationContext) => {
     let devTime = parseFloat(developmentTime);
 
     const designTime = (devTime * estimationContext.designAddon) / 100;
@@ -30,15 +25,21 @@ export  const calculateBest = (developmentTime,estimationContext) => {
     return parseFloat(result.toFixed(1));
 };
 
-export const calculateWorst = (developmentTime,estimationContext,insecurityGrade) => {
-    const res = calculateBest(developmentTime,estimationContext) * getInsecurityFactor(insecurityGrade).worst;
+
+export const calculateMostLikely = (developmentTime, estimationContext, insecurityGrade) => {
+    const res = calculateBest(developmentTime, estimationContext) * getInsecurityFactor(insecurityGrade).mostLikely; // 2 == Høy usikkerhet for mostlikely
     return parseFloat(res.toFixed(1))
 };
 
-export  const calculateExpected = (developmentTime,estimationContext,insecurityGrade) => {
-    const best = calculateBest(developmentTime,estimationContext);
-    const mostLikely = calculateMostLikely(developmentTime,estimationContext,insecurityGrade) * 4;
-    const worst = calculateWorst(developmentTime,estimationContext,insecurityGrade);
+export const calculateWorst = (developmentTime, estimationContext, insecurityGrade) => {
+    const res = calculateBest(developmentTime, estimationContext) * getInsecurityFactor(insecurityGrade).worst;
+    return parseFloat(res.toFixed(1))
+};
+
+export const calculateExpected = (developmentTime, estimationContext, insecurityGrade) => {
+    const best = calculateBest(developmentTime, estimationContext);
+    const mostLikely = calculateMostLikely(developmentTime, estimationContext, insecurityGrade) * 4;
+    const worst = calculateWorst(developmentTime, estimationContext, insecurityGrade);
 
     const res = ((best + mostLikely + worst) / 6).toFixed(1);
     return parseFloat(res);
