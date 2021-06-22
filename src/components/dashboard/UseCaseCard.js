@@ -23,20 +23,18 @@ function UseCaseCard(props) {
     const estimationContext = useContext(EstimationContext);
     const {usecase, id, title, onRemove} = props;
     const collection = fireStore.collection(`projects/${usecase.projectId}/usecases`);
-    const format = (val) => val + `h`
-    const parse = (val) => val.replace(/^\h/, "")
+    const format = (val) => val + `h`;
+    const parse = (val) => val.replace(/^h/, "");
 
     const [developmentTime, setDevelopmentTime] = useState(usecase.developmentTime);
     const [insecurityGrade, setInsecurityGrade] = useState(usecase.insecurityGrade);
 
     const onDevelopmentTimeChange = async (time) => {
-        console.log('updating developmenttime: ' + time);
         setDevelopmentTime(time);
         await collection.doc(id).update('developmentTime', time);
     };
 
     const onInsecurityGradeChange = async (event) => {
-        console.log('updating insecuritygrade: ' + event.target.value);
         setInsecurityGrade(event.target.value);
         await collection.doc(id).update('insecurityGrade', event.target.value);
     };
@@ -59,9 +57,7 @@ function UseCaseCard(props) {
             <Stack
                 align={{base: "center", md: "stretch"}}
                 textAlign={{base: "center", md: "left"}}
-                mt={{base: 4, md: 0}}
                 ml={{md: 6}}
-                pr={12}
             >
                 <Text
                     fontWeight="bold"
