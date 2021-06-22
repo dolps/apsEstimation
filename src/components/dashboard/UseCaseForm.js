@@ -3,14 +3,10 @@ import React from "react";
 import {GridItem, FormControl, Input, Button, Alert, AlertIcon} from "@chakra-ui/react"
 import {useForm} from "react-hook-form";
 
-function FirebaseException(message) {
-    this.message = message;
-    this.name = 'FirebaseException';
-}
 
 const UseCaseForm = ({projectId}) => {
     const {user} = useAuth();
-    const usecasesRef = fireStore.collection(`usecases`);
+    const usecasesRef = fireStore.collection(`projects/${projectId}/usecases`);
     const {handleSubmit, register, setError, formState: {errors, isSubmitting, isSubmitSuccessful}} = useForm();
 
     const onSubmit = async (data) => {

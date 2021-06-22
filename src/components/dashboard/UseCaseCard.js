@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {
     Box,
     Text,
-    Link,
     Stack,
     IconButton,
     NumberInput,
@@ -10,7 +9,6 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
-    HStack,
     InputLeftAddon,
     InputGroup,
     Select
@@ -22,14 +20,12 @@ import {fireStore} from "../../hooks/useAuth";
 // TODO https://codesandbox.io/s/affectionate-swartz-9yk2u?file=/src/App.js:168-222 debounce
 function UseCaseCard(props) {
     const {usecase, id, title, summary, longLine, onRemove} = props;
-    const collection = fireStore.collection(`usecases`);
-    const usecaseRef = collection.where('id', '==', id);
+    const collection = fireStore.collection(`projects/${usecase.projectId}/usecases`);
     const format = (val) => val + `h`
     const parse = (val) => val.replace(/^\h/, "")
 
     const [developmentTime, setDevelopmentTime] = useState(usecase.developmentTime);
     const [insecurityGrade, setInsecurityGrade] = useState(usecase.insecurityGrade);
-
 
     const onDevelopmentTimeChange = async (time) => {
         console.log('updating developmenttime: ' + time);
@@ -41,7 +37,6 @@ function UseCaseCard(props) {
         setInsecurityGrade(event.target.value);
         await collection.doc(id).update('insecurityGrade', event.target.value);
     };
-
 
     return (
         <Box

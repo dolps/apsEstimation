@@ -14,9 +14,6 @@ const Nav = () => {
                         <Link to='/projects'>
                             <Text fontSize="md" mr={8}>Projects</Text>
                         </Link>
-                        <Link to='/'>
-                            <Text fontSize="md" mr={8}>Dashboard</Text>
-                        </Link>
                         <Box as="button" onClick={signOut}>
                             <Text fontSize="md" mr={8}>Logout</Text>
                         </Box>

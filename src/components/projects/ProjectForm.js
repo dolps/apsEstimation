@@ -11,7 +11,7 @@ const ProjectForm = () => {
 
     const joinProject = async (projectId) => {
         console.log('joining');
-        const userProjectsRef = fireStore.doc(`users/${user.uid}/projects/${projectId}`)
+        const userProjectsRef = fireStore.doc(`users/${user.uid}/projects/${projectId}`);
         const projectUsersRef = fireStore.doc(`projects/${projectId}/users/${user.uid}`);
 
         const batch = fireStore.batch();
