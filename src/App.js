@@ -11,7 +11,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom
 import LoginForm from "./components/auth/loginForm";
 import ConfirmForm from "./components/auth/confirmForm";
 import PrivateRoute from "./Route/PrivateRoute";
-import UseCases from "./components/dashboard/UseCases";
+import UseCases from "./components/usecases/UseCases";
 import NotFound from "./components/shared/NotFound";
 import Projects from "./components/projects/Projects";
 
