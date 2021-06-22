@@ -11,7 +11,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom
 import LoginForm from "./components/auth/loginForm";
 import ConfirmForm from "./components/auth/confirmForm";
 import PrivateRoute from "./Route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import UseCases from "./components/dashboard/UseCases";
 import NotFound from "./components/shared/NotFound";
 import Projects from "./components/projects/Projects";
 
@@ -30,8 +30,8 @@ function App() {
                                     <Route exact path="/login">
                                         <LoginForm/>
                                     </Route>
-                                    <PrivateRoute exact path="/projects/:id">
-                                        <Dashboard/>
+                                    <PrivateRoute exact path="/projects/:projectId/usecases">
+                                        <UseCases/>
                                     </PrivateRoute>
                                     <PrivateRoute exact path="/projects">
                                         <Projects/>

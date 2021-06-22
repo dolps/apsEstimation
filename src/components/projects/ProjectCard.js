@@ -10,7 +10,7 @@ import {
 import {MdDelete} from "react-icons/md";
 import {Link as ReachLink} from "react-router-dom";
 
-function Card(props) {
+function ProjectCard(props) {
     const {id, title, summary, longLine, remove} = props;
 
     return (
@@ -46,7 +46,7 @@ function Card(props) {
                 </Text>
                 <Link
                     as={ReachLink}
-                    to={{ pathname: '/projects/'+id}}
+                    to={{ pathname: '/projects/'+ id + '/usecases'}}
                     my={1}
                     display="block"
                     fontSize="md"
@@ -63,4 +63,4 @@ function Card(props) {
     );
 }
 
-export default Card;
+export default ProjectCard;

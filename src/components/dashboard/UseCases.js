@@ -5,16 +5,16 @@ import UseCaseList from "./UseCaseList";
 import EstimationAddon from "./EstimationAddonCard";
 import {EstimationContextProvider} from "../../context/EstimationContext";
 
-const Dashboard = () => {
-    const {id} = useParams();
+const UseCases = () => {
+    const {projectId} = useParams();
 
     return (
         <EstimationContextProvider>
             <EstimationAddon/>
-            <UseCaseForm projectId={id}/>
-            <UseCaseList projectId={id}/>
+            <UseCaseForm projectId={projectId}/>
+            <UseCaseList projectId={projectId}/>
         </EstimationContextProvider>
     )
 };
 
-export default Dashboard;
+export default UseCases;

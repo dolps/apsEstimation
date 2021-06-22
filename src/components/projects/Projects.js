@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {fireStore, useAuth} from "../../hooks/useAuth";
 import {useCollectionData} from "react-firebase-hooks/firestore";
-import Card from "../dashboard/Card";
+import ProjectCard from "./ProjectCard";
 import ProjectForm from "./ProjectForm";
 
 
@@ -49,7 +49,7 @@ const Projects = () => {
                     const summary = numberOfUseCases.toString().concat(" useCases");
                     const longLine = hoursOfWork.toString().concat(" hours of work");
                     return (
-                        <Card
+                        <ProjectCard
                             key={id}
                             id={id}
                             title={title}
