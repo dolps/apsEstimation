@@ -1,25 +1,19 @@
-import {useAuth} from "../../hooks/useAuth";
-import React, {useEffect} from "react";
+import React from "react";
 import {useParams} from "react-router-dom"
 import UseCaseForm from "./UseCaseForm";
 import UseCaseList from "./UseCaseList";
-import Projects from "../projects/Projects";
 import EstimationAddon from "./EstimationAddonCard";
+import {EstimationContextProvider} from "../../context/EstimationContext";
 
 const Dashboard = () => {
-    const {user} = useAuth();
     const {id} = useParams();
 
-    useEffect(() => {
-        console.log("match: " + JSON.stringify(id));
-    });
-
     return (
-        <>
+        <EstimationContextProvider>
             <EstimationAddon/>
             <UseCaseForm projectId={id}/>
             <UseCaseList projectId={id}/>
-        </>
+        </EstimationContextProvider>
     )
 };
 
