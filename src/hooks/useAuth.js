@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import React, {createContext, useContext, useEffect, useState} from "react";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCjVC672q7RfsZ7OHc84S1WYD6xCXpoAzg",
+    apiKey: process.env.REACT_APP_FBAPIKEY,
     authDomain: "apsestimation.firebaseapp.com",
     projectId: "apsestimation",
     storageBucket: "apsestimation.appspot.com",
@@ -27,7 +27,7 @@ export const AuthProvider = ({children}) => {
     const sendSigninLink = email => {
         console.log('sending signinlink to: ' + email);
         return firebase.auth().sendSignInLinkToEmail(email, {
-            url: 'http://localhost:3000/confirm',
+            url: process.env.REACT_APP_DOMAIN + '/confirm' || "http://localhost:3000/confirm",
             handleCodeInApp: true
         }).then(() => {
             return true;
