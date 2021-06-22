@@ -20,9 +20,9 @@ export const calculateBest = (developmentTime, estimationContext) => {
     const totalDevelopmentTime = devTime + designTime + testTime;
     const mgmtTime = (totalDevelopmentTime * estimationContext.MGMTAddon) / 100;
 
-    const result = devTime + designTime + testTime + mgmtTime;
+    const res = devTime + designTime + testTime + mgmtTime;
 
-    return parseFloat(result.toFixed(1));
+    return parseFloat(res.toFixed(1));
 };
 
 
