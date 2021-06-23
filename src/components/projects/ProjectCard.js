@@ -46,7 +46,7 @@ function ProjectCard(props) {
                 </Text>
                 <Link
                     as={ReachLink}
-                    to={{ pathname: '/projects/'+ id + '/usecases'}}
+                    to={{pathname: '/projects/' + id + '/usecases'}}
                     my={1}
                     display="block"
                     fontSize="md"
@@ -55,9 +55,11 @@ function ProjectCard(props) {
                 >
                     {summary}
                 </Link>
+                {/*
                 <Text my={2} color="gray.500">
                     {longLine}
                 </Text>
+                    */}
             </Stack>
         </Box>
     );

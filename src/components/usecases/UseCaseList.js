@@ -6,10 +6,23 @@ import UseCaseCard from "./UseCaseCard";
 
 const UseCaseList = ({projectId}) => {
     const useCaseCollection = fireStore.collection(`projects/${projectId}/usecases`);
+    const projectsRef = fireStore.collection(`projects`).doc(projectId);
     const [usecases] = useCollectionData(useCaseCollection, {idField: "id"});
 
     const onRemove = async (e, useCaseId) => {
-        await useCaseCollection.doc(useCaseId).delete();
+        await fireStore.runTransaction((transaction) => {
+            return transaction.get(projectsRef).then((res) => {
+                if (!res.exists) {
+                    throw "Document does not exist!";
+                }
+                let newNumberOfUseCases = res.data().numberOfUseCases - 1;
+                transaction.update(projectsRef, {
+                    numberOfUseCases: newNumberOfUseCases
+                });
+            }).then(async () => {
+                await useCaseCollection.doc(useCaseId).delete();
+            })
+        });
     };
 
     return (
