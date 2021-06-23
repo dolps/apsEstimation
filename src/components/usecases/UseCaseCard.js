@@ -43,7 +43,7 @@ function UseCaseCard(props) {
         <Box
             p={4}
             display={{md: "flex"}}
-            borderWidth={1}
+            borderBottomWidth={1}
             mb={2}
         >
             <IconButton
