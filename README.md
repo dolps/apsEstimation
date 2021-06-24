@@ -5,7 +5,7 @@ https://www.youtube.com/watch?v=cuvP4h6O2x8 firestore
 https://medium.com/firebase-tips-tricks/how-to-secure-many-to-many-relationships-in-firestore-d19f972fd4d3
 useHooks.com
 maybe do npm i -D firebase-tools
-
+https://choc-ui.tech/docs/application-shells/sidebar-layouts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 // TODO https://codesandbox.io/s/affectionate-swartz-9yk2u?file=/src/App.js:168-222 debounce
 
