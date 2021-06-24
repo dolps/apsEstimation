@@ -99,12 +99,12 @@ function UseCaseCard(props) {
                 </Select>
             </Stack>
             <Stack
-                align={{base: "right", md: "stretch"}}
                 textAlign={{base: "right", md: "right"}}
                 mt={{base: 4, md: 0}}
                 ml={{md: 6}}
             >
                 <Text
+                    align="right"
                     fontWeight="bold"
                     textTransform="uppercase"
                     fontSize="sm"

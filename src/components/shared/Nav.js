@@ -3,6 +3,7 @@ import React from "react";
 import {GridItem, Flex, Text, Box} from "@chakra-ui/react"
 import {Link} from "react-router-dom";
 import {ColorModeSwitcher} from "./ColorModeSwitcher";
+import {Githublink} from "./Githublink";
 
 const Nav = () => {
     const {user, signOut} = useAuth();
@@ -25,6 +26,7 @@ const Nav = () => {
                     </Link>
                 )}
             </Flex>
+            <Githublink position="absolute" top={7} right={12}></Githublink>
             <ColorModeSwitcher position="absolute" top={7} right={3}></ColorModeSwitcher>
         </GridItem>
     )
