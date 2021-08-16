@@ -3,7 +3,7 @@ import {
     Box,
     Grid,
 } from '@chakra-ui/react';
-import Layout from "./components/shared/Layout";
+import {Layout} from "./components/layout/Layout";
 import {AuthProvider} from "./hooks/useAuth";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import LoginForm from "./components/auth/loginForm";
@@ -16,34 +16,30 @@ import Projects from "./components/projects/Projects";
 function App() {
     return (
         <AuthProvider>
-            <Box textAlign="center" fontSize="xl">
-                <Grid minH="100vh" p={3}>
-                    <Router>
-                        <Layout>
-                            <Switch>
-                                <Route exact path="/" render={() => {
-                                    return (<Redirect to="/projects"/>)
-                                }}/>
-                                <Route exact path="/login">
-                                    <LoginForm/>
-                                </Route>
-                                <PrivateRoute exact path="/projects/:projectId/usecases">
-                                    <UseCases/>
-                                </PrivateRoute>
-                                <PrivateRoute exact path="/projects">
-                                    <Projects/>
-                                </PrivateRoute>
-                                <Route exact path="/confirm">
-                                    <ConfirmForm/>
-                                </Route>
-                                <Route>
-                                    <NotFound/>
-                                </Route>
-                            </Switch>
-                        </Layout>
-                    </Router>
-                </Grid>
-            </Box>
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" render={() => {
+                            return (<Redirect to="/projects"/>)
+                        }}/>
+                        <Route exact path="/login">
+                            <LoginForm/>
+                        </Route>
+                        <PrivateRoute exact path="/projects/:projectId/usecases">
+                            <UseCases/>
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/projects">
+                            <Projects/>
+                        </PrivateRoute>
+                        <Route exact path="/confirm">
+                            <ConfirmForm/>
+                        </Route>
+                        <Route>
+                            <NotFound/>
+                        </Route>
+                    </Switch>
+                </Layout>
+            </Router>
         </AuthProvider>
     );
 }
