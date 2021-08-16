@@ -5,7 +5,6 @@ import {
     DrawerContent,
     DrawerOverlay,
     Flex,
-    Icon,
     IconButton,
     Input,
     InputGroup,
@@ -13,10 +12,14 @@ import {
     useColorModeValue,
     useDisclosure,
 } from "@chakra-ui/react";
-import {FaBell} from "react-icons/fa";
 import {FiMenu, FiSearch} from "react-icons/fi";
 import React from "react";
 import {SidebarContent} from "./SidebarContent";
+import {Githublink} from "../shared/Githublink";
+import {ColorModeSwitcher} from "../shared/ColorModeSwitcher";
+import {useAuth} from "../../hooks/useAuth";
+import Route from "react-router-dom/es/Route";
+import {Redirect} from "react-router-dom";
 
 export const Layout = ({children}) => {
     const sidebar = useDisclosure();
@@ -63,16 +66,9 @@ export const Layout = ({children}) => {
                         <InputLeftElement color="gray.500" children={<FiSearch/>}/>
                         <Input placeholder="Search for usecases..."/>
                     </InputGroup>
-
                     <Flex align="center">
-                        <Icon color="gray.500" as={FaBell} cursor="pointer"/>
-                        <Avatar
-                            ml="4"
-                            size="sm"
-                            name="anubra266"
-                            src="https://avatars.githubusercontent.com/u/30869823?v=4"
-                            cursor="pointer"
-                        />
+                        <Githublink/>
+                        <ColorModeSwitcher/>
                     </Flex>
                 </Flex>
 
@@ -82,4 +78,16 @@ export const Layout = ({children}) => {
             </Box>
         </Box>
     );
-}
+};
+
+export const DashboardLayoutRoute = ({component: Component, ...rest}) => {
+    const {user} = useAuth();
+    return (
+        <Route {...rest} render={props => user ?
+            <Layout>
+                <Component {...props} />
+            </Layout> : <Redirect to="/login"/>}
+        >
+        </Route>
+    );
+};

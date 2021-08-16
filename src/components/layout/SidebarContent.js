@@ -7,7 +7,7 @@ import {
     useDisclosure,
     useColorModeValue,
 } from "@chakra-ui/react";
-import {FaClipboardCheck, FaRss} from "react-icons/fa";
+import {FaClipboardCheck, FaRss, FaSignOutAlt} from "react-icons/fa";
 import {AiFillGift} from "react-icons/ai";
 import {BsGearFill} from "react-icons/bs";
 import {HiCode, HiCollection} from "react-icons/hi";
@@ -16,10 +16,12 @@ import React from "react";
 import {Logo} from "@choc-ui/logo";
 import {NavItem} from "./NavItem";
 import {Link} from "react-router-dom";
+import {useAuth} from "../../hooks/useAuth";
 
 
 export const SidebarContent = (props) => {
-    const integrations = useDisclosure();
+    const {signOut} = useAuth();
+    // const integrations = useDisclosure(); todo?
     return (
         <Box
             as="nav"
@@ -40,8 +42,6 @@ export const SidebarContent = (props) => {
             <Flex px="4" py="5" align="center">
                 <Logo/>
                 <Text
-                    fontSize="2xl"
-                    ml="2"
                     color={useColorModeValue("brand.500", "white")}
                     fontWeight="semibold"
                 >
@@ -55,9 +55,11 @@ export const SidebarContent = (props) => {
                 color="gray.600"
                 aria-label="Main Navigation"
             >
-                <NavItem to='/projects' icon={MdHome}>Home</NavItem>
-                <NavItem to='/projects' icon={FaRss}>Articles</NavItem>
-                <NavItem to='/projects' icon={HiCollection}>Collections</NavItem>
+                <NavItem to='/' icon={MdHome}>Home</NavItem>
+                <NavItem to='/projects' icon={HiCollection}>Projects</NavItem>
+                <NavItem icon={BsGearFill}>Settings(todo)</NavItem>
+                <NavItem to='#' onClick={signOut} icon={FaSignOutAlt}>Sign out</NavItem>
+                {/*TODO
                 <NavItem to='/projects'icon={FaClipboardCheck}>Checklists</NavItem>
                 <NavItem to='#' icon={HiCode} onClick={integrations.onToggle}>
                     Integrations
@@ -80,6 +82,9 @@ export const SidebarContent = (props) => {
                 </Collapse>
                 <NavItem icon={AiFillGift}>Changelog</NavItem>
                 <NavItem icon={BsGearFill}>Settings</NavItem>
+
+                */}
+
             </Flex>
         </Box>
     );

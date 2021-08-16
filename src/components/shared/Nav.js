@@ -21,9 +21,17 @@ const Nav = () => {
                     </>
                 )}
                 {!user && (
-                    <Link to='/login'>
-                        <Text fontSize="md" mr={8}>Login</Text>
-                    </Link>
+                    <>
+                        <Text fontSize="md" mr={8}>apsEstimation</Text>
+                        {
+                            /*
+                                <Link to='/login'>
+                            <Text fontSize="md" mr={8}>Login</Text>
+                        </Link>
+                            */
+                        }
+
+                    </>
                 )}
             </Flex>
             <Githublink position="absolute" top={7} right={12}></Githublink>
