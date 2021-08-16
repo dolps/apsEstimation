@@ -55,7 +55,6 @@ export const SidebarContent = (props) => {
                 color="gray.600"
                 aria-label="Main Navigation"
             >
-                <NavItem to='/' icon={MdHome}>Home</NavItem>
                 <NavItem to='/projects' icon={HiCollection}>Projects</NavItem>
                 <NavItem icon={BsGearFill}>Settings(todo)</NavItem>
                 <NavItem to='#' onClick={signOut} icon={FaSignOutAlt}>Sign out</NavItem>
