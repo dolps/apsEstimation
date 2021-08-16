@@ -1,5 +1,5 @@
 import React from 'react';
-import {DashboardLayoutRoute, Layout} from "./components/layout/Layout";
+import {DashboardLayoutRoute} from "./components/shared/DashboardLayout";
 import {LoginLayoutRoute} from "./components/shared/LoginLayout";
 import {AuthProvider} from "./hooks/useAuth";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";

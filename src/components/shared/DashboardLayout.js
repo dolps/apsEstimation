@@ -21,7 +21,7 @@ import {useAuth} from "../../hooks/useAuth";
 import Route from "react-router-dom/es/Route";
 import {Redirect} from "react-router-dom";
 
-export const Layout = ({children}) => {
+const DashboardLayout = ({children}) => {
     const sidebar = useDisclosure();
 
     return (
@@ -84,9 +84,9 @@ export const DashboardLayoutRoute = ({component: Component, ...rest}) => {
     const {user} = useAuth();
     return (
         <Route {...rest} render={props => user ?
-            <Layout>
+            <DashboardLayout>
                 <Component {...props} />
-            </Layout> : <Redirect to="/login"/>}
+            </DashboardLayout> : <Redirect to="/login"/>}
         >
         </Route>
     );
