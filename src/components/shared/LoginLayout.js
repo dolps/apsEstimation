@@ -1,8 +1,9 @@
 import React from "react";
 import {Grid} from "@chakra-ui/react"
 import Nav from "./Nav";
+import {Route} from 'react-router-dom';
 
-const Layout = ({children}) => {
+const LoginLayout = ({children}) => {
     return (
         <Grid
             minH="100vh"
@@ -16,4 +17,13 @@ const Layout = ({children}) => {
         </Grid>
     )
 };
-export default Layout
+
+export const LoginLayoutRoute = ({component: Component, ...rest}) => {
+    return (
+        <Route {...rest} render={props => (
+            <LoginLayout>
+                <Component {...props} />
+            </LoginLayout>
+        )}/>
+    )
+};
