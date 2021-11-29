@@ -32,8 +32,10 @@ const UseCaseList = ({projectId}) => {
             p={6}
             pt={12}
         >
-            {usecases && usecases.map((data) => {
-                return (<UseCaseCard key={data.id}
+            {usecases && usecases
+                .sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
+                .map((data) => {
+                    return (<UseCaseCard key={data.id}
                                      id={data.id}
                                      title={data.title}
                                      summary={data.developmentTime}
